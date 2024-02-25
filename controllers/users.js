@@ -1,4 +1,4 @@
-const mongodb = require('../data/database');
+const mongodb = require('../data/database.js');
 const ObjectId = require('mongodb').ObjectId; // Id mongo assigns all database entries (primary key)
 
 const getAll = async (req, res) => {
