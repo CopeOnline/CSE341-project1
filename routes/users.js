@@ -7,6 +7,4 @@ router.get('/', usersController.getAll);
 
 router.get('/:id', usersController.getSingle);
 
-module.exports = {
-    router
-};
+module.exports = router;
