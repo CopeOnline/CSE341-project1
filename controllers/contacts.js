@@ -19,6 +19,7 @@ const getSingle = async (req, res) => {
     res.status(200).json(contacts[0]);
    });
 };
+
 const createContact = async (req, res) => {
     //swagger.tags=['contacts']
     const contact =  {
