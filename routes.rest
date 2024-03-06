@@ -3,13 +3,10 @@ GET https://project1-h052.onrender.com/contacts
 
 
 # Get contact by Id
-
 GET https://project1-h052.onrender.com/contacts/65db9ddc1d8ecdc82600525b
 
 
-
 # Create a contact
-
 POST https://project1-h052.onrender.com/contacts HTTP/1.1
 Content-Type: application/json
 
@@ -22,7 +19,6 @@ Content-Type: application/json
 }
 
 # Put contact
-
 PUT https://project1-h052.onrender.com/contacts/65db9ddc1d8ecdc82600525b HTTP/1.1
 Content-Type: application/json
 
