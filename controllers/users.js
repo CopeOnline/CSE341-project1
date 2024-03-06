@@ -20,11 +20,10 @@ const getSingle = async (req, res) => {
 
 const createUser = async (req, res) => {
     const user =  {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        username: req.body.username,
         email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        name: req.body.name,
+        ipadress: req.body.ipadress
     };
     const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
     if (response.acknowledged) {
@@ -34,7 +33,7 @@ const createUser = async (req, res) => {
     };
 };
 
-const updateUser = async (res, res) => {
+const updateUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const user ={
         username: req.body.username,
@@ -50,9 +49,9 @@ const updateUser = async (res, res) => {
     };
 };
 
-const deleteUser = async (res, res) => {
+const deleteUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('users').deleteOne({_id: userId}, true);
+    const response = await mongodb.getDatabase().db().collection('users').deleteOne({_id: userId});
     if (response.deleteCount > 0) {
         res.status(204).send();
     } else {

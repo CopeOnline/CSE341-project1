@@ -27,3 +27,6 @@ Content-Type: application/json
     "favoriteColor":"Brown",
     "birthday":"June 19, 2000"
 }
+
+### Delete Contact
+DELETE http://project1-h052.onrender.com/contacts/65db9ddc1d8ecdc82600525b
