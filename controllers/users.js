@@ -18,7 +18,53 @@ const getSingle = async (req, res) => {
    });
 };
 
+const createUser = async (req, res) => {
+    const user =  {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    };
+    const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
+    if (response.acknowledged) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occured while udating the user.');
+    };
+};
+
+const updateUser = async (res, res) => {
+    const userId = new ObjectId(req.params.id);
+    const user ={
+        username: req.body.username,
+        email: req.body.email,
+        name: req.body.name,
+        ipadress: req.body.ipadress
+    };
+    const response = await mongodb.getDatabase().db().collection('users').replaceOne({_id: userId}, user);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occured while udating the user.');
+    };
+};
+
+const deleteUser = async (res, res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('users').deleteOne({_id: userId}, true);
+    if (response.deleteCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occured while udating the user.');
+    };
+};
+
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createUser,
+    updateUser,
+    deleteUser
 }
