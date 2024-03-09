@@ -33,7 +33,7 @@ const createContact = async (req, res) => {
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occured while updating the contact.');
+        res.status(500).json(response.error || 'An error occured while creating the contact.');
     };
 };
 
@@ -51,7 +51,7 @@ const updateContact = async (req, res) => {
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occured while updating the contact.');
+        res.status(500).json(response.error || 'An error occured while updating the contact.');
     };
 };
 
@@ -59,11 +59,10 @@ const deleteContact = async (req, res) => {
     //swagger.tags=['contacts']
     const contactId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({_id: contactId});
-    console.log(response)
     if (response.deleteCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occured while updating the contact.');
+        res.status(500).json(response.error || 'An error occured while deleting the contact.');
     };
 };
 
