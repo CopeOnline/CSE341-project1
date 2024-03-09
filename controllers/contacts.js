@@ -29,7 +29,8 @@ const getSingle = async (req, res) => {
 const createContact = async (req, res) => {
     //swagger.tags=['contacts']
     /*
-    #swagger.description = 'Create a contact in the database, each field is required. The contacted ID number is automatically assigned after creation.';
+    #swagger.description = 'Create a contact in the database, every field is required. The contacted ID number is automatically assigned by the database after submition.
+                            Any field that is ommitted will be set to "NULL"';
     */
     const contact =  {
         firstName: req.body.firstName,
@@ -49,7 +50,8 @@ const createContact = async (req, res) => {
 const updateContact = async (req, res) => {
     //swagger.tags=['contacts']
     /*
-    #swagger.description = 'Update a contacts information using the contacts ID number.';
+    #swagger.description = 'Update a contacts information using the contacts ID number.The contacted ID number is automatically assigned by the database after submition.
+                            Any field that is ommitted will be set to "NULL"';
     */
     const contactId = new ObjectId(req.params.id);
     const contact ={

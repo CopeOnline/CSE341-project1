@@ -13,7 +13,7 @@
   "paths": {
     "/": {
       "get": {
-        "description": "Loads current Hello World homepage.",
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
@@ -34,7 +34,7 @@
         }
       },
       "post": {
-        "description": "Create a contact in the database, each field is required. The contacted ID number is automatically assigned after creation.",
+        "description": "Create a contact in the database, every field is required. The contacted ID number is automatically assigned by the database after submition.\r   Any field that is ommitted will be set to \"NULL\"",
         "parameters": [
           {
             "name": "body",
@@ -92,7 +92,7 @@
         }
       },
       "put": {
-        "description": "Update a contacts information using the contacts ID number.",
+        "description": "Update a contacts information using the contacts ID number.The contacted ID number is automatically assigned by the database after submition.\r   Any field that is ommitted will be set to \"NULL\"",
         "parameters": [
           {
             "name": "id",
