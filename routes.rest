@@ -9,9 +9,9 @@ POST http://project1-h052.onrender.com/contacts HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName":"Joe",
+    "firstName":"Moe",
     "lastName":"Rogain",
-    "email":"jRogain@test.com",
+    "email":"mRogain@test.com",
     "favoriteColor":"Brown",
     "birthday":"June 19, 2000"
 }
@@ -25,7 +25,7 @@ Content-Type: application/json
     "lastName":"Rogain",
     "email":"jRogain@testemail.com",
     "favoriteColor":"Green",
-    "birthday":"June 19, 2000"
+    "birthday":"June 19, 1980"
 }
 
 ### Delete Contact
