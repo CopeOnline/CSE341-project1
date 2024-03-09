@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Contacts API",
-    "description": "Contacts API",
+    "description": "Contacts API Part 1 and Part 2",
     "version": "1.0.0"
   },
   "host": "project1-h052.onrender.com",

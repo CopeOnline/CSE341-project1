@@ -2,31 +2,32 @@
 GET https://project1-h052.onrender.com/contacts
 
 ### Get contact by Id
-GET http://project1-h052.onrender.com/contacts/65db9ddc1d8ecdc82600525b
+GET http://project1-h052.onrender.com/contacts/65db9ff61d8ecdc82600525e
 
 ### Create a contact
 POST http://project1-h052.onrender.com/contacts HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName":"Ashley",
-    "lastName":"Weaver",
-    "email":"aWeaver@test.com",
+    "firstName":"Joe",
+    "lastName":"Rogain",
+    "email":"jRogain@test.com",
     "favoriteColor":"Brown",
     "birthday":"June 19, 2000"
 }
 
 ### Put contact
-PUT http://project1-h052.onrender.com/contacts/65db9ddc1d8ecdc82600525b HTTP/1.1
+PUT http://project1-h052.onrender.com/contacts/65eca4151b24eecf04d2c2f7 HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName":"Ashley",
-    "lastName":"Weaver",
-    "email":"aWeaver@test.com",
-    "favoriteColor":"Brown",
+    "firstName":"Joe",
+    "lastName":"Rogain",
+    "email":"jRogain@testemail.com",
+    "favoriteColor":"Green",
     "birthday":"June 19, 2000"
 }
 
 ### Delete Contact
-DELETE http://project1-h052.onrender.com/contacts/65db9ddc1d8ecdc82600525b
+DELETE http://project1-h052.onrender.com/contacts/65eca8941b24eecf04d2c2fd HTTP/1.1
+
