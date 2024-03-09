@@ -3,6 +3,9 @@ const ObjectId = require('mongodb').ObjectId; // Id mongo assigns all database e
 
 const getAll = async (req, res) => {
     //swagger.tags=['contacts']
+    /*
+    #swagger.description = 'Returns all contacts in the database.';
+    */
     const result = await mongodb.getDatabase().db().collection('contacts').find();
     result.toArray().then((contacts) => {
      res.setHeader('Content-Type', "application/json");
@@ -12,6 +15,9 @@ const getAll = async (req, res) => {
 
 const getSingle = async (req, res) => {
     //swagger.tags=['contacts']
+    /*
+    #swagger.description = 'Returns a contact from the database using the contacts ID number';
+    */
     const contactId = new ObjectId(req.params.id)
    const result = await mongodb.getDatabase().db().collection('contacts').find({ _id: contactId });
    result.toArray().then((contacts) => {
@@ -22,6 +28,9 @@ const getSingle = async (req, res) => {
 
 const createContact = async (req, res) => {
     //swagger.tags=['contacts']
+    /*
+    #swagger.description = 'Create a contact in the database, each field is required. The contacted ID number is automatically assigned after creation.';
+    */
     const contact =  {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -39,6 +48,9 @@ const createContact = async (req, res) => {
 
 const updateContact = async (req, res) => {
     //swagger.tags=['contacts']
+    /*
+    #swagger.description = 'Update a contacts information using the contacts ID number.';
+    */
     const contactId = new ObjectId(req.params.id);
     const contact ={
         firstName: req.body.firstName,
@@ -57,6 +69,9 @@ const updateContact = async (req, res) => {
 
 const deleteContact = async (req, res) => {
     //swagger.tags=['contacts']
+    /*
+    #swagger.description = 'Delete a contact from the database using the contacts ID number.';
+    */
     const contactId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({_id: contactId});
     if (response.deleteCount > 0) {

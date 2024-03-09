@@ -13,7 +13,7 @@
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "description": "Loads current Hello World homepage.",
         "responses": {
           "200": {
             "description": "OK"
@@ -23,7 +23,7 @@
     },
     "/contacts/": {
       "get": {
-        "description": "",
+        "description": "Returns all contacts in the database.",
         "produces": [
           "application/json"
         ],
@@ -34,7 +34,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a contact in the database, each field is required. The contacted ID number is automatically assigned after creation.",
         "parameters": [
           {
             "name": "body",
@@ -73,7 +73,7 @@
     },
     "/contacts/{id}": {
       "get": {
-        "description": "",
+        "description": "Returns a contact from the database using the contacts ID number",
         "produces": [
           "application/json"
         ],
@@ -92,7 +92,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a contacts information using the contacts ID number.",
         "parameters": [
           {
             "name": "id",
@@ -135,7 +135,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete a contact from the database using the contacts ID number.",
         "parameters": [
           {
             "name": "id",
