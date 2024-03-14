@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const utilities = require("../utilities/");
 
 router.use('/', require('./swagger'));
 
@@ -8,6 +7,6 @@ router.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-router.use('/contacts', utilities.handleErrors(require('./contacts')));
+router.use('/contacts', require('./contacts'));
 
 module.exports = router;
