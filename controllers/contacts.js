@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
     #swagger.description = 'Returns all contacts in the database.';
     */
     mongodb
-    .getDb()
+    .getDatabase()
     .db()
     .collection('contacts')
     .find()
@@ -33,7 +33,7 @@ const getSingle = async (req, res) => {
     }
     const userId = new ObjectId(req.params.id);
     mongodb
-      .getDb()
+      .getDatabase()
       .db()
       .collection('contacts')
       .find({ _id: userId })
@@ -52,20 +52,20 @@ const createContact = async (req, res) => {
     #swagger.description = 'Create a contact in the database, every field is required. The contacted ID number is automatically assigned by the database after submition.
      Any field that is ommitted will be set to "NULL"';
     */
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday
-  }
-  const response = await mongodb.getDatabase().db().collection('contacts').insertOne(contact)
-  if (response.acknowledged) {
-    res.status(204).send()
-  } else {
-    res.status(500).json(response.error || 'An error occured while creating the contact.')
+     const contact = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday
+    };
+    const response = await mongodb.getDatabase().db().collection('contacts').insertOne(contact);
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    } else {
+      res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+    }
   };
-}
 
 const updateContact = async (req, res) => {
   // swagger.tags=['contacts']
@@ -86,7 +86,7 @@ const updateContact = async (req, res) => {
       birthday: req.body.birthday
     };
     const response = await mongodb
-      .getDb()
+      .getDatabase()
       .db()
       .collection('contacts')
       .replaceOne({ _id: userId }, contact);
@@ -97,6 +97,7 @@ const updateContact = async (req, res) => {
       res.status(500).json(response.error || 'Some error occurred while updating the contact.');
     }
   };
+  
 
 const deleteContact = async (req, res) => {
   // swagger.tags=['contacts']
@@ -107,7 +108,7 @@ const deleteContact = async (req, res) => {
       res.status(400).json('Must use a valid contact id to delete a contact.');
     }
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('contacts').remove({ _id: userId }, true);
+    const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({ _id: userId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send();
