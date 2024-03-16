@@ -1,9 +1,9 @@
-const mongodb = require('../data/database')
-const ObjectId = require('mongodb').ObjectId // Id mongo assigns all database entries (primary key)
+const mongodb = require('../data/database');
+const ObjectId = require('mongodb').ObjectId ;// Id mongo assigns all database entries (primary key)
 
-let err
+let err;
 
-const getAll = async (req, res) => {
+const getAll = (req, res) => {
   // swagger.tags=['contacts']
   /*
     #swagger.description = 'Returns all contacts in the database.';
@@ -13,17 +13,17 @@ const getAll = async (req, res) => {
     .db()
     .collection('contacts')
     .find()
-    .toArray((err, lists) => {
+    .toArray((err, result) => {
       if (err) {
         res.status(400).json({ message: err });
-      }
+      };
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
+      res.status(200).json(result);
     });
 };
 
 
-const getSingle = async (req, res) => {
+const getSingle = (req, res) => {
   // swagger.tags=['contacts']
   /*
     #swagger.description = 'Returns a contact from the database using the contacts ID number';
@@ -31,16 +31,16 @@ const getSingle = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid contact id to find a contact.');
     }
-    const userId = new ObjectId(req.params.id);
+    const contactId = new ObjectId(req.params.id);
     mongodb
       .getDatabase()
       .db()
       .collection('contacts')
-      .find({ _id: userId })
+      .find({ _id: contactId })
       .toArray((err, result) => {
         if (err) {
           res.status(400).json({ message: err });
-        }
+        };
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(result[0]);
       });
@@ -89,7 +89,7 @@ const updateContact = async (req, res) => {
       .getDatabase()
       .db()
       .collection('contacts')
-      .replaceOne({ _id: userId }, contact);
+      .replaceOne({ _id: contactId }, contact);
     console.log(response);
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -108,7 +108,7 @@ const deleteContact = async (req, res) => {
       res.status(400).json('Must use a valid contact id to delete a contact.');
     }
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({ _id: userId }, true);
+    const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({ _id: contactId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send();

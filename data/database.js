@@ -1,9 +1,9 @@
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv');
+dotenv.config();
 
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
 
-let database
+let database;
 
 const initDb = (callback) => {
   if (database) {
@@ -18,16 +18,16 @@ const initDb = (callback) => {
     .catch((err) => {
       callback(err)
     })
-}
+};
 
 const getDatabase = () => {
   if (!database) {
     throw Error('Database not initailized')
   }
   return database
-}
+};
 
 module.exports = {
   initDb,
   getDatabase
-}
+};
